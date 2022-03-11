@@ -2,8 +2,7 @@
 import 'package:flutter/material.dart';
 
 class MyNextPage extends StatefulWidget {
-  const MyNextPage({Key? key, required this.title}) : super(key: key);
-  final String title;
+  const MyNextPage({Key? key}) : super(key: key);
 
   @override
   State<MyNextPage> createState() => _MyNextPageState();
@@ -18,15 +17,16 @@ class _MyNextPageState extends State<MyNextPage> {
         backgroundColor: Colors.transparent,
         elevation: 0,
         toolbarHeight: 70.0,
-        title: Align(
-          alignment: Alignment.center,
-          child: Text(
-            'Next 7 Days',
-            style: TextStyle(
-              fontSize: 22,
-              fontWeight: FontWeight.w600,
-              color: Colors.white.withOpacity(0.8),
-            ),
+        centerTitle: true,
+        //You already have the title here sef
+        //take note, you overuse Align widget
+        //center title should work in an appbar
+        title: Text(
+          'Next 7 Days',
+          style: TextStyle(
+            fontSize: 22,
+            fontWeight: FontWeight.w600,
+            color: Colors.white.withOpacity(0.8),
           ),
         ),
         actions: <Widget>[

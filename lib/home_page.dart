@@ -12,6 +12,43 @@ class MyHomePage extends StatefulWidget {
 }
 
 class _MyHomePageState extends State<MyHomePage> {
+  //this is a function holding a widget below
+  //it helps to extract widgets into functions and classes
+  //so you can easily reuse them.
+  Widget _infoColumn(
+    String title,
+    String subtitle, {
+    bool inverse = false,
+    CrossAxisAlignment alignment = CrossAxisAlignment.center,
+  }) {
+    return Column(
+      crossAxisAlignment: alignment,
+      children: <Widget>[
+        Text(
+          title,
+          style: TextStyle(
+            color: inverse
+                ? Colors.white.withOpacity(0.4)
+                : Colors.white.withOpacity(0.8),
+            fontSize: 18,
+            fontWeight: inverse ? FontWeight.normal : FontWeight.bold,
+          ),
+        ),
+        const SizedBox(height: 5),
+        Text(
+          subtitle,
+          style: TextStyle(
+            color: inverse
+                ? Colors.white.withOpacity(0.8)
+                : Colors.white.withOpacity(0.4),
+            fontSize: 15,
+            fontWeight: inverse ? FontWeight.bold : FontWeight.normal,
+          ),
+        ),
+      ],
+    );
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -19,34 +56,35 @@ class _MyHomePageState extends State<MyHomePage> {
       appBar: AppBar(
         backgroundColor: Colors.transparent,
         elevation: 0,
+        //However setting centerTitle to true should center whatever
+        //widget the title of the appBar is holding.
+        //N.B titles are automaticcally centered on ios.
+        centerTitle: true,
         toolbarHeight: 80.0,
         leading: const Icon(
           Icons.menu,
           color: Colors.white,
           size: 30,
         ),
-        title: Align(
-          alignment: Alignment.center,
-          child: Column(
-            children: <Widget>[
-              Text(
-                'Bayumas,Indonesia',
-                style: TextStyle(
-                  color: Colors.white.withOpacity(0.8),
-                ),
+        //you dont need to wrap a column in align
+        //Column uses crossAxis and mainAxis to position its children
+        title: Column(
+          children: <Widget>[
+            Text(
+              'Bayumas,Indonesia',
+              style: TextStyle(
+                color: Colors.white.withOpacity(0.8),
               ),
-              const SizedBox(
-                height: 5,
+            ),
+            const SizedBox(height: 5),
+            Text(
+              'Monday, 07 March 2022',
+              style: TextStyle(
+                color: Colors.white.withOpacity(0.5),
+                fontSize: 14,
               ),
-              Text(
-                'Monday, 07 March 2022',
-                style: TextStyle(
-                  color: Colors.white.withOpacity(0.5),
-                  fontSize: 14,
-                ),
-              ),
-            ],
-          ),
+            ),
+          ],
         ),
         actions: <Widget>[
           Padding(
@@ -75,74 +113,57 @@ class _MyHomePageState extends State<MyHomePage> {
               const Align(
                 alignment: Alignment.center,
                 child: Image(
-                  image: AssetImage(
-                    'images/weather1.png',
-                  ),
+                  image: AssetImage('images/weather1.png'),
                   height: 120,
                   width: 120,
                 ),
               ),
-              const SizedBox(
-                height: 30,
-              ),
+              const SizedBox(height: 30),
               Padding(
                 padding: const EdgeInsets.symmetric(horizontal: 30.0),
                 child: Container(
+                  height: 250,
+                  width: 400,
+                  decoration: BoxDecoration(
+                    color: Colors.white.withOpacity(0.1),
+                    border: Border.all(
+                      width: 1,
+                      color: Colors.white.withOpacity(0.5),
+                    ),
+                  ),
                   child: Column(
                     children: <Widget>[
-                      const SizedBox(
-                        height: 20,
-                      ),
-                      Row(
-                        children: <Widget>[
-                          const Padding(
-                            padding: EdgeInsets.only(left: 50),
-                            child: Text(
-                              '24°',
-                              style: TextStyle(
-                                color: Colors.white,
-                                fontWeight: FontWeight.w600,
-                                fontSize: 45,
-                              ),
-                            ),
-                          ),
-                          const SizedBox(
-                            width: 30,
-                          ),
-                          Text(
-                            '|',
-                            style: TextStyle(
-                              color: Colors.white.withOpacity(0.3),
-                              fontSize: 40,
-                            ),
-                          ),
-                          const SizedBox(
-                            width: 20,
-                          ),
-                          Column(
-                            children: <Widget>[
-                              Text(
-                                'Sunny Afternoon',
+                      const SizedBox(height: 20),
+                      //Intrinsic height ensures the divider is the same
+                      //height as the all the other elements. Without this
+                      //vertical divider will throw errors or not appear at all
+                      IntrinsicHeight(
+                        child: Row(
+                          children: <Widget>[
+                            const Padding(
+                              padding: EdgeInsets.only(left: 50),
+                              child: Text(
+                                '24°',
                                 style: TextStyle(
-                                  color: Colors.white.withOpacity(0.8),
-                                  fontSize: 18,
-                                  fontWeight: FontWeight.bold,
+                                  color: Colors.white,
+                                  fontWeight: FontWeight.w600,
+                                  fontSize: 45,
                                 ),
                               ),
-                              Align(
-                                alignment: Alignment.centerLeft,
-                                child: Text(
-                                  '12 PM - 3 PM            ',
-                                  style: TextStyle(
-                                    color: Colors.white.withOpacity(0.4),
-                                    fontSize: 15,
-                                    fontWeight: FontWeight.bold,
-                                  ),
-                                ),
-                              ),
-                            ],
-                          ),
-                        ],
+                            ),
+                            const SizedBox(width: 30),
+                            //this is a vertical divider
+                            const VerticalDivider(),
+                            const SizedBox(
+                              width: 20,
+                            ),
+                            _infoColumn(
+                              'Sunny Afternoon',
+                              '12 PM - 3 PM',
+                              alignment: CrossAxisAlignment.start,
+                            ),
+                          ],
+                        ),
                       ),
                       Divider(
                         indent: 20,
@@ -155,72 +176,11 @@ class _MyHomePageState extends State<MyHomePage> {
                         padding: const EdgeInsets.symmetric(horizontal: 35.0),
                         child: Row(
                           children: <Widget>[
-                            Column(
-                              children: <Widget>[
-                                Text(
-                                  'Wind',
-                                  style: TextStyle(
-                                    color: Colors.white.withOpacity(0.4),
-                                    fontSize: 16,
-                                    fontWeight: FontWeight.bold,
-                                  ),
-                                ),
-                                Text(
-                                  '18km/h',
-                                  style: TextStyle(
-                                    color: Colors.white.withOpacity(0.8),
-                                    fontSize: 16,
-                                    fontWeight: FontWeight.bold,
-                                  ),
-                                ),
-                              ],
-                            ),
-                            const SizedBox(
-                              width: 40,
-                            ),
-                            Column(
-                              children: <Widget>[
-                                Text(
-                                  'Pressure',
-                                  style: TextStyle(
-                                    color: Colors.white.withOpacity(0.4),
-                                    fontSize: 16,
-                                    fontWeight: FontWeight.bold,
-                                  ),
-                                ),
-                                Text(
-                                  '1014 mbar',
-                                  style: TextStyle(
-                                    color: Colors.white.withOpacity(0.8),
-                                    fontSize: 16,
-                                    fontWeight: FontWeight.bold,
-                                  ),
-                                ),
-                              ],
-                            ),
-                            const SizedBox(
-                              width: 40,
-                            ),
-                            Column(
-                              children: <Widget>[
-                                Text(
-                                  'Hummidity',
-                                  style: TextStyle(
-                                    color: Colors.white.withOpacity(0.4),
-                                    fontSize: 16,
-                                    fontWeight: FontWeight.bold,
-                                  ),
-                                ),
-                                Text(
-                                  '32%',
-                                  style: TextStyle(
-                                    color: Colors.white.withOpacity(0.8),
-                                    fontSize: 16,
-                                    fontWeight: FontWeight.bold,
-                                  ),
-                                ),
-                              ],
-                            ),
+                            _infoColumn('Wind', '18km/h', inverse: true),
+                            const SizedBox(width: 40),
+                            _infoColumn('Pressure', '1014 mbar', inverse: true),
+                            const SizedBox(width: 40),
+                            _infoColumn('Hummidity', '32%', inverse: true),
                           ],
                         ),
                       ),
@@ -236,51 +196,36 @@ class _MyHomePageState extends State<MyHomePage> {
                         child: Container(
                           height: 65,
                           width: 350,
+                          //keep your code well organized
+                          //properties ontop, before children
+                          //makes it easily readable. Dont put decoration
+                          //down down below.
+                          decoration: BoxDecoration(
+                            color: Colors.white.withOpacity(0.25),
+                          ),
                           child: Padding(
                             padding: const EdgeInsets.symmetric(
-                                horizontal: 15, vertical: 10),
+                              horizontal: 5,
+                              vertical: 10,
+                            ),
                             child: Column(
                               children: <Widget>[
-                                Align(
-                                  alignment: Alignment.topLeft,
-                                  child: Text(
-                                    'Be careful, at 6 PM, there would be rain,',
-                                    style: TextStyle(
-                                      color: Colors.white.withOpacity(0.6),
-                                      fontWeight: FontWeight.w600,
-                                      fontSize: 16,
-                                    ),
-                                  ),
-                                ),
-                                Align(
-                                  alignment: Alignment.centerLeft,
-                                  child: Text(
-                                    'prepare yourself for it.',
-                                    style: TextStyle(
-                                      color: Colors.white.withOpacity(0.6),
-                                      fontWeight: FontWeight.w600,
-                                      fontSize: 16,
-                                    ),
+                                //You dont need to use two text widgets for multiline text
+                                //Just use the line breaker [\n] in your string
+                                Text(
+                                  'Be careful, at 6 PM, there would be rain,\nprepare yourself for it.',
+                                  style: TextStyle(
+                                    color: Colors.white.withOpacity(0.6),
+                                    fontWeight: FontWeight.w600,
+                                    fontSize: 16,
                                   ),
                                 ),
                               ],
                             ),
                           ),
-                          decoration: BoxDecoration(
-                            color: Colors.white.withOpacity(0.25),
-                          ),
                         ),
                       ),
                     ],
-                  ),
-                  height: 250,
-                  width: 400,
-                  decoration: BoxDecoration(
-                    border: Border.all(
-                      width: 1,
-                      color: Colors.white.withOpacity(0.5),
-                    ),
-                    color: Colors.white.withOpacity(0.1),
                   ),
                 ),
               ),
@@ -308,12 +253,8 @@ class _MyHomePageState extends State<MyHomePage> {
                       fontWeight: FontWeight.w700,
                     ),
                   ),
-                  const SizedBox(
-                    width: 196,
-                  ),
+                  const SizedBox(width: 196),
                   Container(
-                    height: 35,
-                    width: 140,
                     child: Padding(
                       padding: const EdgeInsets.only(
                         left: 5.0,
@@ -325,8 +266,15 @@ class _MyHomePageState extends State<MyHomePage> {
                               Navigator.push(
                                 context,
                                 MaterialPageRoute(
-                                  builder: (context) =>
-                                      const MyNextPage(title: 'Next 7 Days'),
+                                  //Use arrow functions when it can be
+                                  //on the same line else the code gets messy
+                                  builder: (context) {
+                                    //Name your screens better
+                                    return const MyNextPage(
+                                        //Keep your page titles in that page please. Not in the constructor
+                                        // title: 'Next 7 Days',
+                                        );
+                                  },
                                 ),
                               );
                             },
@@ -339,9 +287,7 @@ class _MyHomePageState extends State<MyHomePage> {
                               ),
                             ),
                           ),
-                          const SizedBox(
-                            width: 5,
-                          ),
+                          const SizedBox(width: 5),
                           const Icon(
                             Icons.arrow_right_alt_sharp,
                             color: Color.fromARGB(255, 236, 214, 10),
@@ -360,9 +306,7 @@ class _MyHomePageState extends State<MyHomePage> {
                 ],
               ),
             ),
-            const SizedBox(
-              height: 15,
-            ),
+            const SizedBox(height: 15),
             Padding(
               padding: const EdgeInsets.only(left: 25),
               child: Row(
@@ -376,15 +320,11 @@ class _MyHomePageState extends State<MyHomePage> {
                           height: 5,
                         ),
                         const Image(
-                          image: AssetImage(
-                            'images/weather2.jpg',
-                          ),
+                          image: AssetImage('images/weather2.jpg'),
                           height: 25,
                           width: 25,
                         ),
-                        const SizedBox(
-                          height: 10,
-                        ),
+                        const SizedBox(height: 10),
                         const Text(
                           '19°',
                           style: TextStyle(
@@ -392,9 +332,7 @@ class _MyHomePageState extends State<MyHomePage> {
                             fontSize: 28,
                           ),
                         ),
-                        const SizedBox(
-                          height: 10,
-                        ),
+                        const SizedBox(height: 10),
                         Text(
                           '9 AM',
                           style: TextStyle(
@@ -413,9 +351,7 @@ class _MyHomePageState extends State<MyHomePage> {
                       borderRadius: BorderRadius.circular(3),
                     ),
                   ),
-                  const SizedBox(
-                    width: 20,
-                  ),
+                  const SizedBox(width: 20),
                   Container(
                     height: 110,
                     width: 80,
@@ -425,25 +361,20 @@ class _MyHomePageState extends State<MyHomePage> {
                           height: 5,
                         ),
                         const Image(
-                          image: AssetImage(
-                            'images/weather1.png',
-                          ),
+                          image: AssetImage('images/weather1.png'),
                           height: 25,
                           width: 25,
                         ),
-                        const SizedBox(
-                          height: 10,
-                        ),
+                        const SizedBox(height: 10),
                         const Text(
                           '24°',
                           style: TextStyle(
-                              fontWeight: FontWeight.bold,
-                              fontSize: 28,
-                              color: Colors.white),
+                            fontWeight: FontWeight.bold,
+                            fontSize: 28,
+                            color: Colors.white,
+                          ),
                         ),
-                        const SizedBox(
-                          height: 10,
-                        ),
+                        const SizedBox(height: 10),
                         Text(
                           '12 PM',
                           style: TextStyle(
@@ -459,9 +390,7 @@ class _MyHomePageState extends State<MyHomePage> {
                       borderRadius: BorderRadius.circular(3),
                     ),
                   ),
-                  const SizedBox(
-                    width: 20,
-                  ),
+                  const SizedBox(width: 20),
                   Container(
                     height: 110,
                     width: 80,
@@ -471,15 +400,11 @@ class _MyHomePageState extends State<MyHomePage> {
                           height: 5,
                         ),
                         const Image(
-                          image: AssetImage(
-                            'images/weather2.jpg',
-                          ),
+                          image: AssetImage('images/weather2.jpg'),
                           height: 25,
                           width: 25,
                         ),
-                        const SizedBox(
-                          height: 10,
-                        ),
+                        const SizedBox(height: 10),
                         const Text(
                           '21°',
                           style: TextStyle(
@@ -487,9 +412,7 @@ class _MyHomePageState extends State<MyHomePage> {
                             fontSize: 28,
                           ),
                         ),
-                        const SizedBox(
-                          height: 10,
-                        ),
+                        const SizedBox(height: 10),
                         Text(
                           '3 PM',
                           style: TextStyle(
@@ -508,17 +431,13 @@ class _MyHomePageState extends State<MyHomePage> {
                       borderRadius: BorderRadius.circular(3),
                     ),
                   ),
-                  const SizedBox(
-                    width: 20,
-                  ),
+                  const SizedBox(width: 20),
                   Container(
                     height: 110,
                     width: 80,
                     child: Column(
                       children: <Widget>[
-                        const SizedBox(
-                          height: 5,
-                        ),
+                        const SizedBox(height: 5),
                         const Image(
                           image: AssetImage(
                             'images/weather3.jpg',
@@ -526,9 +445,7 @@ class _MyHomePageState extends State<MyHomePage> {
                           height: 25,
                           width: 25,
                         ),
-                        const SizedBox(
-                          height: 10,
-                        ),
+                        const SizedBox(height: 10),
                         const Text(
                           '18°',
                           style: TextStyle(
@@ -536,9 +453,7 @@ class _MyHomePageState extends State<MyHomePage> {
                             fontSize: 28,
                           ),
                         ),
-                        const SizedBox(
-                          height: 10,
-                        ),
+                        const SizedBox(height: 10),
                         Text(
                           '6 PM',
                           style: TextStyle(
@@ -560,13 +475,8 @@ class _MyHomePageState extends State<MyHomePage> {
                 ],
               ),
             ),
-            const SizedBox(
-              height: 10,
-            ),
-            const Divider(
-              height: 30,
-              thickness: 2,
-            ),
+            const SizedBox(height: 10),
+            const Divider(height: 30, thickness: 2),
             Padding(
               padding: const EdgeInsets.symmetric(horizontal: 60.0),
               child: Row(
@@ -583,9 +493,7 @@ class _MyHomePageState extends State<MyHomePage> {
                             color: const Color.fromARGB(255, 34, 112, 228)
                                 .withOpacity(0.5),
                           ),
-                          const SizedBox(
-                            width: 10,
-                          ),
+                          const SizedBox(width: 10),
                           const Text(
                             'Home',
                             style: TextStyle(
@@ -635,9 +543,7 @@ class _MyHomePageState extends State<MyHomePage> {
             ),
           ],
         ),
-        decoration: const BoxDecoration(
-          color: Colors.white,
-        ),
+        decoration: const BoxDecoration(color: Colors.white),
       ),
     );
   }

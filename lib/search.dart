@@ -1,6 +1,5 @@
 //import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'next.dart';
 
 class MySearchPage extends StatefulWidget {
   const MySearchPage({Key? key, required this.title}) : super(key: key);
