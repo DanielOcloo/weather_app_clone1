@@ -1,16 +1,142 @@
 //import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'next.dart';
+import 'home_page.dart';
 
 class MySearchPage extends StatefulWidget {
-  const MySearchPage({Key? key, required this.title}) : super(key: key);
-  final String title;
+  const MySearchPage({
+    Key? key,
+  }) : super(key: key);
 
   @override
   State<MySearchPage> createState() => _MySearchPageState();
 }
 
 class _MySearchPageState extends State<MySearchPage> {
+  Widget _infoColumn(
+    String title,
+    String subtitle, {
+    bool inverse = false,
+  }) {
+    return Column(
+      children: <Widget>[
+        Text(
+          title,
+          style: TextStyle(
+            color: inverse
+                ? Colors.white.withOpacity(0.4)
+                : Colors.white.withOpacity(0.8),
+            fontSize: 18,
+            fontWeight: inverse ? FontWeight.w600 : FontWeight.bold,
+          ),
+        ),
+        const SizedBox(height: 3),
+        Text(
+          subtitle,
+          style: TextStyle(
+            color: inverse
+                ? Colors.white.withOpacity(0.8)
+                : Colors.white.withOpacity(0.4),
+            fontSize: 15,
+            fontWeight: inverse ? FontWeight.bold : FontWeight.w600,
+          ),
+        ),
+      ],
+    );
+  }
+
+  Widget _info2Column(
+    String title,
+    String subtitle, {
+    bool inverse = false,
+  }) {
+    return Column(
+      children: <Widget>[
+        Text(
+          title,
+          style: TextStyle(
+            color: inverse
+                ? Colors.black.withOpacity(0.4)
+                : Colors.black.withOpacity(0.8),
+            fontSize: 18,
+            fontWeight: inverse ? FontWeight.w600 : FontWeight.bold,
+          ),
+        ),
+        const SizedBox(height: 3),
+        Text(
+          subtitle,
+          style: TextStyle(
+            color: inverse
+                ? Colors.black.withOpacity(0.8)
+                : Colors.black.withOpacity(0.4),
+            fontSize: 15,
+            fontWeight: inverse ? FontWeight.bold : FontWeight.w600,
+          ),
+        ),
+      ],
+    );
+  }
+
+  Widget _info2Column2(
+    String title,
+    String subtitle,
+  ) {
+    return Column(
+      children: <Widget>[
+        Text(
+          title,
+          style: TextStyle(
+            color: const Color.fromARGB(255, 34, 112, 228).withOpacity(0.8),
+            fontSize: 18,
+            fontWeight: FontWeight.w900,
+          ),
+        ),
+        const SizedBox(height: 3),
+        Text(
+          subtitle,
+          style: TextStyle(
+            color: const Color.fromARGB(255, 34, 112, 228).withOpacity(0.8),
+            fontSize: 15,
+            fontWeight: FontWeight.w900,
+          ),
+        ),
+      ],
+    );
+  }
+
+  Widget _infoSColumn2(
+    String title,
+    String subtitle, {
+    bool inverse = false,
+  }) {
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      mainAxisAlignment: MainAxisAlignment.center,
+      children: <Widget>[
+        Text(
+          title,
+          style: TextStyle(
+            color: inverse
+                ? Colors.black.withOpacity(0.4)
+                : Colors.black.withOpacity(0.8),
+            fontSize: 18,
+            fontWeight: inverse ? FontWeight.w600 : FontWeight.bold,
+          ),
+        ),
+        const SizedBox(height: 3),
+        Text(
+          subtitle,
+          style: TextStyle(
+            color: inverse
+                ? Colors.black.withOpacity(0.8)
+                : Colors.black.withOpacity(0.4),
+            fontSize: 15,
+            fontWeight: inverse ? FontWeight.bold : FontWeight.w600,
+          ),
+        ),
+      ],
+    );
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -18,34 +144,18 @@ class _MySearchPageState extends State<MySearchPage> {
       appBar: AppBar(
         backgroundColor: Colors.transparent,
         elevation: 0,
+        centerTitle: true,
         toolbarHeight: 80.0,
         leading: const Icon(
           Icons.menu,
           color: Colors.white,
           size: 30,
         ),
-        title: Align(
-          alignment: Alignment.center,
-          child: Column(
-            children: <Widget>[
-              Text(
-                'Bayumas,Indonesia',
-                style: TextStyle(
-                  color: Colors.white.withOpacity(0.8),
-                ),
-              ),
-              const SizedBox(
-                height: 5,
-              ),
-              Text(
-                'Monday, 07 March 2022',
-                style: TextStyle(
-                  color: Colors.white.withOpacity(0.5),
-                  fontSize: 14,
-                ),
-              ),
-            ],
-          ),
+        title: Column(
+          crossAxisAlignment: CrossAxisAlignment.center,
+          children: <Widget>[
+            _infoColumn('Bayumas,Indonesia', 'Monday,o7 March 2022')
+          ],
         ),
         actions: <Widget>[
           Padding(
@@ -71,9 +181,7 @@ class _MySearchPageState extends State<MySearchPage> {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: <Widget>[
-              const SizedBox(
-                height: 15,
-              ),
+              const SizedBox(height: 15),
               Padding(
                 padding: const EdgeInsets.symmetric(horizontal: 20.0),
                 child: TextField(
@@ -100,17 +208,16 @@ class _MySearchPageState extends State<MySearchPage> {
                   ),
                 ),
               ),
-              const SizedBox(
-                height: 25,
-              ),
+              const SizedBox(height: 25),
               Container(
                 height: 600,
                 width: 450,
+                decoration: const BoxDecoration(
+                  color: Colors.white,
+                ),
                 child: Column(
                   children: <Widget>[
-                    const SizedBox(
-                      height: 30,
-                    ),
+                    const SizedBox(height: 30),
                     const Padding(
                       padding: EdgeInsets.symmetric(horizontal: 25.0),
                       child: Align(
@@ -125,82 +232,66 @@ class _MySearchPageState extends State<MySearchPage> {
                         ),
                       ),
                     ),
-                    const SizedBox(
-                      height: 15,
-                    ),
+                    const SizedBox(height: 15),
                     Padding(
                       padding: const EdgeInsets.symmetric(horizontal: 25.0),
                       child: Container(
                         height: 155,
                         width: 400,
+                        decoration: BoxDecoration(
+                          border: Border.all(
+                            width: 1,
+                            color: Colors.black.withOpacity(0.2),
+                          ),
+                        ),
                         child: Column(
                           children: <Widget>[
                             const SizedBox(height: 10),
                             Padding(
                               padding:
                                   const EdgeInsets.symmetric(horizontal: 20.0),
-                              child: Row(
-                                children: [
-                                  Column(
-                                    children: [
-                                      const Text(
-                                        'Purbalingga',
-                                        style: TextStyle(
-                                            fontSize: 18,
-                                            fontWeight: FontWeight.bold),
+                              child: IntrinsicHeight(
+                                child: Row(
+                                  children: [
+                                    _infoSColumn2('Purbalingga', 'Sunny'),
+                                    const SizedBox(width: 25),
+                                    VerticalDivider(
+                                      indent: 17,
+                                      endIndent: 17,
+                                      width: 10,
+                                      thickness: 2.5,
+                                      color: Colors.black.withOpacity(0.2),
+                                    ),
+                                    const SizedBox(width: 20),
+                                    const Text(
+                                      '23°',
+                                      style: TextStyle(
+                                        fontSize: 40,
+                                        fontWeight: FontWeight.bold,
+                                        color:
+                                            Color.fromARGB(255, 34, 112, 228),
                                       ),
-                                      Text(
-                                        'Sunny                ',
-                                        style: TextStyle(
-                                          fontSize: 15,
-                                          fontWeight: FontWeight.bold,
-                                          color: Colors.black.withOpacity(0.4),
-                                        ),
+                                    ),
+                                    const SizedBox(width: 20),
+                                    VerticalDivider(
+                                      indent: 17,
+                                      endIndent: 17,
+                                      width: 10,
+                                      thickness: 2.5,
+                                      color: Colors.black.withOpacity(0.2),
+                                    ),
+                                    const SizedBox(
+                                      width: 30,
+                                    ),
+                                    const Image(
+                                      image: AssetImage(
+                                        'images/weather1.png',
                                       ),
-                                    ],
-                                  ),
-                                  const SizedBox(
-                                    width: 25,
-                                  ),
-                                  Text(
-                                    '|',
-                                    style: TextStyle(
-                                      fontSize: 40,
-                                      color: Colors.black.withOpacity(0.15),
+                                      height: 70,
+                                      width: 60,
                                     ),
-                                  ),
-                                  const SizedBox(
-                                    width: 20,
-                                  ),
-                                  const Text(
-                                    '23°',
-                                    style: TextStyle(
-                                      fontSize: 40,
-                                      fontWeight: FontWeight.bold,
-                                      color: Color.fromARGB(255, 34, 112, 228),
-                                    ),
-                                  ),
-                                  const SizedBox(
-                                    width: 20,
-                                  ),
-                                  Text(
-                                    '|',
-                                    style: TextStyle(
-                                      fontSize: 40,
-                                      color: Colors.black.withOpacity(0.15),
-                                    ),
-                                  ),
-                                  const SizedBox(
-                                    width: 30,
-                                  ),
-                                  const Image(
-                                    image: AssetImage(
-                                      'images/weather1.png',
-                                    ),
-                                    height: 70,
-                                    width: 60,
-                                  ),
-                                ],
+                                  ],
+                                ),
                               ),
                             ),
                             Divider(
@@ -213,147 +304,25 @@ class _MySearchPageState extends State<MySearchPage> {
                             Padding(
                               padding: const EdgeInsets.only(left: 25.0),
                               child: Row(
+                                mainAxisAlignment:
+                                    MainAxisAlignment.spaceEvenly,
                                 children: <Widget>[
-                                  Column(
-                                    children: [
-                                      const Text(
-                                        '19°',
-                                        style: TextStyle(
-                                            fontSize: 20,
-                                            fontWeight: FontWeight.bold),
-                                      ),
-                                      Text(
-                                        '9 PM',
-                                        style: TextStyle(
-                                          fontSize: 15,
-                                          fontWeight: FontWeight.bold,
-                                          color: Colors.black.withOpacity(0.4),
-                                        ),
-                                      ),
-                                    ],
-                                  ),
-                                  const SizedBox(
-                                    width: 20,
-                                  ),
-                                  Column(
-                                    children: [
-                                      const Text(
-                                        '21°',
-                                        style: TextStyle(
-                                            fontSize: 20,
-                                            fontWeight: FontWeight.bold),
-                                      ),
-                                      Text(
-                                        '9 AM',
-                                        style: TextStyle(
-                                          fontSize: 15,
-                                          fontWeight: FontWeight.bold,
-                                          color: Colors.black.withOpacity(0.4),
-                                        ),
-                                      ),
-                                    ],
-                                  ),
-                                  const SizedBox(
-                                    width: 20,
-                                  ),
-                                  Column(
-                                    children: [
-                                      const Text(
-                                        '23°',
-                                        style: TextStyle(
-                                          fontSize: 20,
-                                          fontWeight: FontWeight.bold,
-                                          color:
-                                              Color.fromARGB(255, 34, 112, 228),
-                                        ),
-                                      ),
-                                      Text(
-                                        '12 PM',
-                                        style: TextStyle(
-                                            fontSize: 15,
-                                            fontWeight: FontWeight.bold,
-                                            color: const Color.fromARGB(
-                                                    255, 34, 112, 228)
-                                                .withOpacity(0.8)),
-                                      ),
-                                    ],
-                                  ),
-                                  const SizedBox(
-                                    width: 20,
-                                  ),
-                                  Column(
-                                    children: [
-                                      const Text(
-                                        '26°',
-                                        style: TextStyle(
-                                            fontSize: 20,
-                                            fontWeight: FontWeight.bold),
-                                      ),
-                                      Text(
-                                        '3 PM',
-                                        style: TextStyle(
-                                          fontSize: 15,
-                                          fontWeight: FontWeight.bold,
-                                          color: Colors.black.withOpacity(0.4),
-                                        ),
-                                      ),
-                                    ],
-                                  ),
-                                  const SizedBox(
-                                    width: 20,
-                                  ),
-                                  Column(
-                                    children: [
-                                      const Text(
-                                        '20°',
-                                        style: TextStyle(
-                                            fontSize: 20,
-                                            fontWeight: FontWeight.bold),
-                                      ),
-                                      Text(
-                                        '6 PM',
-                                        style: TextStyle(
-                                          fontSize: 15,
-                                          fontWeight: FontWeight.bold,
-                                          color: Colors.black.withOpacity(0.4),
-                                        ),
-                                      ),
-                                    ],
-                                  ),
-                                  const SizedBox(
-                                    width: 20,
-                                  ),
-                                  Column(
-                                    children: [
-                                      const Text(
-                                        '17°',
-                                        style: TextStyle(
-                                            fontSize: 20,
-                                            fontWeight: FontWeight.bold),
-                                      ),
-                                      Text(
-                                        '9 PM',
-                                        style: TextStyle(
-                                          fontSize: 15,
-                                          fontWeight: FontWeight.bold,
-                                          color: Colors.black.withOpacity(0.4),
-                                        ),
-                                      ),
-                                    ],
-                                  ),
-                                  const SizedBox(
-                                    width: 20,
-                                  ),
+                                  _info2Column('19°', '9 PM'),
+                                  const SizedBox(width: 20),
+                                  _info2Column('21°', '9 AM'),
+                                  const SizedBox(width: 20),
+                                  _info2Column2('23°', '12 PM'),
+                                  const SizedBox(width: 20),
+                                  _info2Column('26°', '3 PM'),
+                                  const SizedBox(width: 20),
+                                  _info2Column('20°', '6 PM'),
+                                  const SizedBox(width: 20),
+                                  _info2Column('17°', '9 PM'),
+                                  const SizedBox(width: 20),
                                 ],
                               ),
                             ),
                           ],
-                        ),
-                        decoration: BoxDecoration(
-                          border: Border.all(
-                            width: 1,
-                            color: Colors.black.withOpacity(0.2),
-                          ),
                         ),
                       ),
                     ),
@@ -365,74 +334,60 @@ class _MySearchPageState extends State<MySearchPage> {
                       child: Container(
                         height: 155,
                         width: 400,
+                        decoration: BoxDecoration(
+                          border: Border.all(
+                            width: 1,
+                            color: Colors.black.withOpacity(0.2),
+                          ),
+                        ),
                         child: Column(
                           children: <Widget>[
                             const SizedBox(height: 10),
                             Padding(
                               padding:
                                   const EdgeInsets.symmetric(horizontal: 20.0),
-                              child: Row(
-                                children: [
-                                  Column(
-                                    children: [
-                                      const Text(
-                                        'Purbalingga',
-                                        style: TextStyle(
-                                            fontSize: 18,
-                                            fontWeight: FontWeight.bold),
+                              child: IntrinsicHeight(
+                                child: Row(
+                                  children: [
+                                    _infoSColumn2('Purbalingga', 'Sunny'),
+                                    const SizedBox(width: 25),
+                                    VerticalDivider(
+                                      indent: 17,
+                                      endIndent: 17,
+                                      width: 10,
+                                      thickness: 2.5,
+                                      color: Colors.black.withOpacity(0.2),
+                                    ),
+                                    const SizedBox(width: 20),
+                                    const Text(
+                                      '20°',
+                                      style: TextStyle(
+                                        fontSize: 40,
+                                        fontWeight: FontWeight.bold,
+                                        color:
+                                            Color.fromARGB(255, 34, 112, 228),
                                       ),
-                                      Text(
-                                        'Cloudy              ',
-                                        style: TextStyle(
-                                          fontSize: 15,
-                                          fontWeight: FontWeight.bold,
-                                          color: Colors.black.withOpacity(0.4),
-                                        ),
+                                    ),
+                                    const SizedBox(width: 20),
+                                    VerticalDivider(
+                                      indent: 17,
+                                      endIndent: 17,
+                                      width: 10,
+                                      thickness: 2.5,
+                                      color: Colors.black.withOpacity(0.2),
+                                    ),
+                                    const SizedBox(
+                                      width: 30,
+                                    ),
+                                    const Image(
+                                      image: AssetImage(
+                                        'images/weather2.jpg',
                                       ),
-                                    ],
-                                  ),
-                                  const SizedBox(
-                                    width: 25,
-                                  ),
-                                  Text(
-                                    '|',
-                                    style: TextStyle(
-                                      fontSize: 40,
-                                      color: Colors.black.withOpacity(0.15),
+                                      height: 70,
+                                      width: 60,
                                     ),
-                                  ),
-                                  const SizedBox(
-                                    width: 20,
-                                  ),
-                                  const Text(
-                                    '20°',
-                                    style: TextStyle(
-                                      fontSize: 40,
-                                      fontWeight: FontWeight.bold,
-                                      color: Color.fromARGB(255, 34, 112, 228),
-                                    ),
-                                  ),
-                                  const SizedBox(
-                                    width: 20,
-                                  ),
-                                  Text(
-                                    '|',
-                                    style: TextStyle(
-                                      fontSize: 40,
-                                      color: Colors.black.withOpacity(0.15),
-                                    ),
-                                  ),
-                                  const SizedBox(
-                                    width: 30,
-                                  ),
-                                  const Image(
-                                    image: AssetImage(
-                                      'images/weather2.jpg',
-                                    ),
-                                    height: 70,
-                                    width: 60,
-                                  ),
-                                ],
+                                  ],
+                                ),
                               ),
                             ),
                             Divider(
@@ -445,147 +400,25 @@ class _MySearchPageState extends State<MySearchPage> {
                             Padding(
                               padding: const EdgeInsets.only(left: 25.0),
                               child: Row(
+                                mainAxisAlignment:
+                                    MainAxisAlignment.spaceEvenly,
                                 children: <Widget>[
-                                  Column(
-                                    children: [
-                                      const Text(
-                                        '20°',
-                                        style: TextStyle(
-                                            fontSize: 20,
-                                            fontWeight: FontWeight.bold),
-                                      ),
-                                      Text(
-                                        '9 PM',
-                                        style: TextStyle(
-                                          fontSize: 15,
-                                          fontWeight: FontWeight.bold,
-                                          color: Colors.black.withOpacity(0.4),
-                                        ),
-                                      ),
-                                    ],
-                                  ),
-                                  const SizedBox(
-                                    width: 20,
-                                  ),
-                                  Column(
-                                    children: [
-                                      const Text(
-                                        '21°',
-                                        style: TextStyle(
-                                            fontSize: 20,
-                                            fontWeight: FontWeight.bold),
-                                      ),
-                                      Text(
-                                        '9 AM',
-                                        style: TextStyle(
-                                          fontSize: 15,
-                                          fontWeight: FontWeight.bold,
-                                          color: Colors.black.withOpacity(0.4),
-                                        ),
-                                      ),
-                                    ],
-                                  ),
-                                  const SizedBox(
-                                    width: 20,
-                                  ),
-                                  Column(
-                                    children: [
-                                      const Text(
-                                        '20°',
-                                        style: TextStyle(
-                                          fontSize: 20,
-                                          fontWeight: FontWeight.bold,
-                                          color:
-                                              Color.fromARGB(255, 34, 112, 228),
-                                        ),
-                                      ),
-                                      Text(
-                                        '12 PM',
-                                        style: TextStyle(
-                                            fontSize: 15,
-                                            fontWeight: FontWeight.bold,
-                                            color: const Color.fromARGB(
-                                                    255, 34, 112, 228)
-                                                .withOpacity(0.8)),
-                                      ),
-                                    ],
-                                  ),
-                                  const SizedBox(
-                                    width: 20,
-                                  ),
-                                  Column(
-                                    children: [
-                                      const Text(
-                                        '23°',
-                                        style: TextStyle(
-                                            fontSize: 20,
-                                            fontWeight: FontWeight.bold),
-                                      ),
-                                      Text(
-                                        '3 PM',
-                                        style: TextStyle(
-                                          fontSize: 15,
-                                          fontWeight: FontWeight.bold,
-                                          color: Colors.black.withOpacity(0.4),
-                                        ),
-                                      ),
-                                    ],
-                                  ),
-                                  const SizedBox(
-                                    width: 20,
-                                  ),
-                                  Column(
-                                    children: [
-                                      const Text(
-                                        '19°',
-                                        style: TextStyle(
-                                            fontSize: 20,
-                                            fontWeight: FontWeight.bold),
-                                      ),
-                                      Text(
-                                        '6 PM',
-                                        style: TextStyle(
-                                          fontSize: 15,
-                                          fontWeight: FontWeight.bold,
-                                          color: Colors.black.withOpacity(0.4),
-                                        ),
-                                      ),
-                                    ],
-                                  ),
-                                  const SizedBox(
-                                    width: 20,
-                                  ),
-                                  Column(
-                                    children: [
-                                      const Text(
-                                        '18°',
-                                        style: TextStyle(
-                                            fontSize: 20,
-                                            fontWeight: FontWeight.bold),
-                                      ),
-                                      Text(
-                                        '9 PM',
-                                        style: TextStyle(
-                                          fontSize: 15,
-                                          fontWeight: FontWeight.bold,
-                                          color: Colors.black.withOpacity(0.4),
-                                        ),
-                                      ),
-                                    ],
-                                  ),
-                                  const SizedBox(
-                                    width: 20,
-                                  ),
+                                  _info2Column('20°', '9 PM'),
+                                  const SizedBox(width: 20),
+                                  _info2Column('21°', '9 AM'),
+                                  const SizedBox(width: 20),
+                                  _info2Column2('20°', '12 PM'),
+                                  const SizedBox(width: 20),
+                                  _info2Column('23°', '3 PM'),
+                                  const SizedBox(width: 20),
+                                  _info2Column('19°', '6 PM'),
+                                  const SizedBox(width: 20),
+                                  _info2Column('18°', '9 PM'),
+                                  const SizedBox(width: 20),
                                 ],
                               ),
                             ),
                           ],
-                        ),
-                        decoration: BoxDecoration(
-                          border: Border.all(
-                            width: 1,
-                            color: Colors.black.withOpacity(0.2),
-                          ),
                         ),
                       ),
                     ),
@@ -597,74 +430,60 @@ class _MySearchPageState extends State<MySearchPage> {
                       child: Container(
                         height: 155,
                         width: 400,
+                        decoration: BoxDecoration(
+                          border: Border.all(
+                            width: 1,
+                            color: Colors.black.withOpacity(0.2),
+                          ),
+                        ),
                         child: Column(
                           children: <Widget>[
                             const SizedBox(height: 10),
                             Padding(
                               padding:
                                   const EdgeInsets.symmetric(horizontal: 20.0),
-                              child: Row(
-                                children: [
-                                  Column(
-                                    children: [
-                                      const Text(
-                                        'Cilacap',
-                                        style: TextStyle(
-                                            fontSize: 18,
-                                            fontWeight: FontWeight.bold),
+                              child: IntrinsicHeight(
+                                child: Row(
+                                  children: [
+                                    _infoSColumn2('Cilacap', 'Rainy'),
+                                    const SizedBox(width: 65),
+                                    VerticalDivider(
+                                      indent: 17,
+                                      endIndent: 17,
+                                      width: 10,
+                                      thickness: 2.5,
+                                      color: Colors.black.withOpacity(0.2),
+                                    ),
+                                    const SizedBox(width: 20),
+                                    const Text(
+                                      '18°',
+                                      style: TextStyle(
+                                        fontSize: 40,
+                                        fontWeight: FontWeight.bold,
+                                        color:
+                                            Color.fromARGB(255, 34, 112, 228),
                                       ),
-                                      Text(
-                                        'Rainy      ',
-                                        style: TextStyle(
-                                          fontSize: 15,
-                                          fontWeight: FontWeight.bold,
-                                          color: Colors.black.withOpacity(0.4),
-                                        ),
+                                    ),
+                                    const SizedBox(width: 20),
+                                    VerticalDivider(
+                                      indent: 17,
+                                      endIndent: 17,
+                                      width: 10,
+                                      thickness: 2.5,
+                                      color: Colors.black.withOpacity(0.2),
+                                    ),
+                                    const SizedBox(
+                                      width: 30,
+                                    ),
+                                    const Image(
+                                      image: AssetImage(
+                                        'images/weather3.jpg',
                                       ),
-                                    ],
-                                  ),
-                                  const SizedBox(
-                                    width: 65,
-                                  ),
-                                  Text(
-                                    '|',
-                                    style: TextStyle(
-                                      fontSize: 40,
-                                      color: Colors.black.withOpacity(0.15),
+                                      height: 70,
+                                      width: 60,
                                     ),
-                                  ),
-                                  const SizedBox(
-                                    width: 20,
-                                  ),
-                                  const Text(
-                                    '18°',
-                                    style: TextStyle(
-                                      fontSize: 40,
-                                      fontWeight: FontWeight.bold,
-                                      color: Color.fromARGB(255, 34, 112, 228),
-                                    ),
-                                  ),
-                                  const SizedBox(
-                                    width: 20,
-                                  ),
-                                  Text(
-                                    '|',
-                                    style: TextStyle(
-                                      fontSize: 40,
-                                      color: Colors.black.withOpacity(0.15),
-                                    ),
-                                  ),
-                                  const SizedBox(
-                                    width: 30,
-                                  ),
-                                  const Image(
-                                    image: AssetImage(
-                                      'images/weather3.jpg',
-                                    ),
-                                    height: 70,
-                                    width: 60,
-                                  ),
-                                ],
+                                  ],
+                                ),
                               ),
                             ),
                             Divider(
@@ -677,154 +496,29 @@ class _MySearchPageState extends State<MySearchPage> {
                             Padding(
                               padding: const EdgeInsets.only(left: 25.0),
                               child: Row(
+                                mainAxisAlignment:
+                                    MainAxisAlignment.spaceEvenly,
                                 children: <Widget>[
-                                  Column(
-                                    children: [
-                                      const Text(
-                                        '20°',
-                                        style: TextStyle(
-                                            fontSize: 20,
-                                            fontWeight: FontWeight.bold),
-                                      ),
-                                      Text(
-                                        '9 PM',
-                                        style: TextStyle(
-                                          fontSize: 15,
-                                          fontWeight: FontWeight.bold,
-                                          color: Colors.black.withOpacity(0.4),
-                                        ),
-                                      ),
-                                    ],
-                                  ),
-                                  const SizedBox(
-                                    width: 20,
-                                  ),
-                                  Column(
-                                    children: [
-                                      const Text(
-                                        '19°',
-                                        style: TextStyle(
-                                            fontSize: 20,
-                                            fontWeight: FontWeight.bold),
-                                      ),
-                                      Text(
-                                        '9 AM',
-                                        style: TextStyle(
-                                          fontSize: 15,
-                                          fontWeight: FontWeight.bold,
-                                          color: Colors.black.withOpacity(0.4),
-                                        ),
-                                      ),
-                                    ],
-                                  ),
-                                  const SizedBox(
-                                    width: 20,
-                                  ),
-                                  Column(
-                                    children: [
-                                      const Text(
-                                        '18°',
-                                        style: TextStyle(
-                                          fontSize: 20,
-                                          fontWeight: FontWeight.bold,
-                                          color:
-                                              Color.fromARGB(255, 34, 112, 228),
-                                        ),
-                                      ),
-                                      Text(
-                                        '12 PM',
-                                        style: TextStyle(
-                                            fontSize: 15,
-                                            fontWeight: FontWeight.bold,
-                                            color: const Color.fromARGB(
-                                                    255, 34, 112, 228)
-                                                .withOpacity(0.8)),
-                                      ),
-                                    ],
-                                  ),
-                                  const SizedBox(
-                                    width: 20,
-                                  ),
-                                  Column(
-                                    children: [
-                                      const Text(
-                                        '21°',
-                                        style: TextStyle(
-                                            fontSize: 20,
-                                            fontWeight: FontWeight.bold),
-                                      ),
-                                      Text(
-                                        '3 PM',
-                                        style: TextStyle(
-                                          fontSize: 15,
-                                          fontWeight: FontWeight.bold,
-                                          color: Colors.black.withOpacity(0.4),
-                                        ),
-                                      ),
-                                    ],
-                                  ),
-                                  const SizedBox(
-                                    width: 20,
-                                  ),
-                                  Column(
-                                    children: [
-                                      const Text(
-                                        '22°',
-                                        style: TextStyle(
-                                            fontSize: 20,
-                                            fontWeight: FontWeight.bold),
-                                      ),
-                                      Text(
-                                        '6 PM',
-                                        style: TextStyle(
-                                          fontSize: 15,
-                                          fontWeight: FontWeight.bold,
-                                          color: Colors.black.withOpacity(0.4),
-                                        ),
-                                      ),
-                                    ],
-                                  ),
-                                  const SizedBox(
-                                    width: 20,
-                                  ),
-                                  Column(
-                                    children: [
-                                      const Text(
-                                        '19°',
-                                        style: TextStyle(
-                                            fontSize: 20,
-                                            fontWeight: FontWeight.bold),
-                                      ),
-                                      Text(
-                                        '9 PM',
-                                        style: TextStyle(
-                                          fontSize: 15,
-                                          fontWeight: FontWeight.bold,
-                                          color: Colors.black.withOpacity(0.4),
-                                        ),
-                                      ),
-                                    ],
-                                  ),
-                                  const SizedBox(
-                                    width: 20,
-                                  ),
+                                  _info2Column('20°', '9 PM'),
+                                  const SizedBox(width: 20),
+                                  _info2Column('19°', '9 AM'),
+                                  const SizedBox(width: 20),
+                                  _info2Column2('18°', '12 PM'),
+                                  const SizedBox(width: 20),
+                                  _info2Column('21°', '3 PM'),
+                                  const SizedBox(width: 20),
+                                  _info2Column('22°', '6 PM'),
+                                  const SizedBox(width: 20),
+                                  _info2Column('19°', '9 PM'),
+                                  const SizedBox(width: 20),
                                 ],
                               ),
                             ),
                           ],
-                        ),
-                        decoration: BoxDecoration(
-                          border: Border.all(
-                            width: 1,
-                            color: Colors.black.withOpacity(0.2),
-                          ),
                         ),
                       ),
                     ),
                   ],
-                ),
-                decoration: const BoxDecoration(
-                  color: Colors.white,
                 ),
               ),
             ],
@@ -832,7 +526,7 @@ class _MySearchPageState extends State<MySearchPage> {
         ),
       ),
       bottomNavigationBar: Container(
-        height: 80,
+        height: 75,
         width: 300,
         child: Column(
           children: <Widget>[
@@ -847,10 +541,18 @@ class _MySearchPageState extends State<MySearchPage> {
               padding: const EdgeInsets.symmetric(horizontal: 60.0),
               child: Row(
                 children: <Widget>[
-                  Icon(
-                    Icons.home_outlined,
-                    size: 35,
-                    color: Colors.black.withOpacity(0.4),
+                  IconButton(
+                    onPressed: () => Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                        builder: (context) => const MyHomePage(),
+                      ),
+                    ),
+                    icon: Icon(
+                      Icons.home_outlined,
+                      size: 35,
+                      color: Colors.black.withOpacity(0.4),
+                    ),
                   ),
                   const SizedBox(
                     width: 60,
