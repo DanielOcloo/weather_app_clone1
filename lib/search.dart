@@ -280,9 +280,7 @@ class _MySearchPageState extends State<MySearchPage> {
                                       thickness: 2.5,
                                       color: Colors.black.withOpacity(0.2),
                                     ),
-                                    const SizedBox(
-                                      width: 30,
-                                    ),
+                                    const SizedBox(width: 30),
                                     const Image(
                                       image: AssetImage(
                                         'images/weather1.png',
@@ -326,9 +324,7 @@ class _MySearchPageState extends State<MySearchPage> {
                         ),
                       ),
                     ),
-                    const SizedBox(
-                      height: 10,
-                    ),
+                    const SizedBox(height: 10),
                     Padding(
                       padding: const EdgeInsets.symmetric(horizontal: 25.0),
                       child: Container(
@@ -349,7 +345,7 @@ class _MySearchPageState extends State<MySearchPage> {
                               child: IntrinsicHeight(
                                 child: Row(
                                   children: [
-                                    _infoSColumn2('Purbalingga', 'Sunny'),
+                                    _infoSColumn2('Purbalingga', 'Cloudy'),
                                     const SizedBox(width: 25),
                                     VerticalDivider(
                                       indent: 17,
@@ -376,12 +372,10 @@ class _MySearchPageState extends State<MySearchPage> {
                                       thickness: 2.5,
                                       color: Colors.black.withOpacity(0.2),
                                     ),
-                                    const SizedBox(
-                                      width: 30,
-                                    ),
+                                    const SizedBox(width: 30),
                                     const Image(
                                       image: AssetImage(
-                                        'images/weather2.jpg',
+                                        'images/weather1.png',
                                       ),
                                       height: 70,
                                       width: 60,
@@ -422,9 +416,7 @@ class _MySearchPageState extends State<MySearchPage> {
                         ),
                       ),
                     ),
-                    const SizedBox(
-                      height: 10,
-                    ),
+                    const SizedBox(height: 10),
                     Padding(
                       padding: const EdgeInsets.symmetric(horizontal: 25.0),
                       child: Container(
@@ -472,9 +464,7 @@ class _MySearchPageState extends State<MySearchPage> {
                                       thickness: 2.5,
                                       color: Colors.black.withOpacity(0.2),
                                     ),
-                                    const SizedBox(
-                                      width: 30,
-                                    ),
+                                    const SizedBox(width: 30),
                                     const Image(
                                       image: AssetImage(
                                         'images/weather3.jpg',
@@ -528,15 +518,16 @@ class _MySearchPageState extends State<MySearchPage> {
       bottomNavigationBar: Container(
         height: 75,
         width: 300,
+        decoration: const BoxDecoration(
+          color: Colors.white,
+        ),
         child: Column(
           children: <Widget>[
             const Divider(
               height: 0,
               thickness: 2,
             ),
-            const SizedBox(
-              height: 15,
-            ),
+            const SizedBox(height: 15),
             Padding(
               padding: const EdgeInsets.symmetric(horizontal: 60.0),
               child: Row(
@@ -554,12 +545,15 @@ class _MySearchPageState extends State<MySearchPage> {
                       color: Colors.black.withOpacity(0.4),
                     ),
                   ),
-                  const SizedBox(
-                    width: 60,
-                  ),
+                  const SizedBox(width: 60),
                   Container(
                     height: 45,
                     width: 100,
+                    decoration: BoxDecoration(
+                      color: const Color.fromARGB(255, 34, 112, 228)
+                          .withOpacity(0.2),
+                      borderRadius: BorderRadius.circular(40),
+                    ),
                     child: Padding(
                       padding: const EdgeInsets.symmetric(horizontal: 10.0),
                       child: Row(
@@ -569,9 +563,7 @@ class _MySearchPageState extends State<MySearchPage> {
                             color: const Color.fromARGB(255, 34, 112, 228)
                                 .withOpacity(0.5),
                           ),
-                          const SizedBox(
-                            width: 5,
-                          ),
+                          const SizedBox(width: 8),
                           const Text(
                             'Search',
                             style: TextStyle(
@@ -583,15 +575,8 @@ class _MySearchPageState extends State<MySearchPage> {
                         ],
                       ),
                     ),
-                    decoration: BoxDecoration(
-                      color: const Color.fromARGB(255, 34, 112, 228)
-                          .withOpacity(0.2),
-                      borderRadius: BorderRadius.circular(40),
-                    ),
                   ),
-                  const SizedBox(
-                    width: 60,
-                  ),
+                  const SizedBox(width: 60),
                   Icon(
                     Icons.adjust,
                     size: 35,
@@ -601,9 +586,6 @@ class _MySearchPageState extends State<MySearchPage> {
               ),
             ),
           ],
-        ),
-        decoration: const BoxDecoration(
-          color: Colors.white,
         ),
       ),
     );
