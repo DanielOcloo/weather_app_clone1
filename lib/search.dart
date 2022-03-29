@@ -1,4 +1,3 @@
-//import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'home_page.dart';
 
@@ -9,6 +8,82 @@ class MySearchPage extends StatefulWidget {
 
   @override
   State<MySearchPage> createState() => _MySearchPageState();
+}
+
+class InfoAColumn extends StatelessWidget {
+  final String? picture;
+  final String? title;
+  final String? subtitle;
+
+  const InfoAColumn({
+    Key? key,
+    this.picture,
+    this.title,
+    this.subtitle,
+  }) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return Column(
+      children: <Widget>[
+        Text(
+          '$title',
+          style: TextStyle(
+            color: Colors.black.withOpacity(0.8),
+            fontSize: 18,
+            fontWeight: FontWeight.bold,
+          ),
+        ),
+        const SizedBox(height: 3),
+        Text(
+          '$subtitle',
+          style: TextStyle(
+            color: Colors.black.withOpacity(0.4),
+            fontSize: 15,
+            fontWeight: FontWeight.w600,
+          ),
+        ),
+      ],
+    );
+  }
+}
+
+class InfoAColumn2 extends StatelessWidget {
+  final String? picture;
+  final String? title;
+  final String? subtitle;
+
+  const InfoAColumn2({
+    Key? key,
+    this.picture,
+    this.title,
+    this.subtitle,
+  }) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return Column(
+      children: <Widget>[
+        Text(
+          '$title',
+          style: TextStyle(
+            color: const Color.fromARGB(255, 34, 112, 228).withOpacity(0.8),
+            fontSize: 18,
+            fontWeight: FontWeight.w900,
+          ),
+        ),
+        const SizedBox(height: 3),
+        Text(
+          '$subtitle',
+          style: TextStyle(
+            color: const Color.fromARGB(255, 34, 112, 228).withOpacity(0.8),
+            fontSize: 15,
+            fontWeight: FontWeight.w900,
+          ),
+        ),
+      ],
+    );
+  }
 }
 
 class _MySearchPageState extends State<MySearchPage> {
@@ -38,65 +113,6 @@ class _MySearchPageState extends State<MySearchPage> {
                 : Colors.white.withOpacity(0.4),
             fontSize: 15,
             fontWeight: inverse ? FontWeight.bold : FontWeight.w600,
-          ),
-        ),
-      ],
-    );
-  }
-
-  Widget _info2Column(
-    String title,
-    String subtitle, {
-    bool inverse = false,
-  }) {
-    return Column(
-      children: <Widget>[
-        Text(
-          title,
-          style: TextStyle(
-            color: inverse
-                ? Colors.black.withOpacity(0.4)
-                : Colors.black.withOpacity(0.8),
-            fontSize: 18,
-            fontWeight: inverse ? FontWeight.w600 : FontWeight.bold,
-          ),
-        ),
-        const SizedBox(height: 3),
-        Text(
-          subtitle,
-          style: TextStyle(
-            color: inverse
-                ? Colors.black.withOpacity(0.8)
-                : Colors.black.withOpacity(0.4),
-            fontSize: 15,
-            fontWeight: inverse ? FontWeight.bold : FontWeight.w600,
-          ),
-        ),
-      ],
-    );
-  }
-
-  Widget _info2Column2(
-    String title,
-    String subtitle,
-  ) {
-    return Column(
-      children: <Widget>[
-        Text(
-          title,
-          style: TextStyle(
-            color: const Color.fromARGB(255, 34, 112, 228).withOpacity(0.8),
-            fontSize: 18,
-            fontWeight: FontWeight.w900,
-          ),
-        ),
-        const SizedBox(height: 3),
-        Text(
-          subtitle,
-          style: TextStyle(
-            color: const Color.fromARGB(255, 34, 112, 228).withOpacity(0.8),
-            fontSize: 15,
-            fontWeight: FontWeight.w900,
           ),
         ),
       ],
@@ -163,14 +179,14 @@ class _MySearchPageState extends State<MySearchPage> {
             child: Container(
               height: 40,
               width: 40,
+              decoration: BoxDecoration(
+                shape: BoxShape.circle,
+                color: Colors.white.withOpacity(0.2),
+              ),
               child: const Icon(
                 Icons.more_vert_outlined,
                 color: Colors.white,
                 size: 30,
-              ),
-              decoration: BoxDecoration(
-                shape: BoxShape.circle,
-                color: Colors.white.withOpacity(0.2),
               ),
             ),
           )
@@ -283,7 +299,7 @@ class _MySearchPageState extends State<MySearchPage> {
                                     const SizedBox(width: 30),
                                     const Image(
                                       image: AssetImage(
-                                        'images/weather1.png',
+                                        'images/weather3.jpg',
                                       ),
                                       height: 70,
                                       width: 60,
@@ -304,19 +320,19 @@ class _MySearchPageState extends State<MySearchPage> {
                               child: Row(
                                 mainAxisAlignment:
                                     MainAxisAlignment.spaceEvenly,
-                                children: <Widget>[
-                                  _info2Column('19°', '9 PM'),
-                                  const SizedBox(width: 20),
-                                  _info2Column('21°', '9 AM'),
-                                  const SizedBox(width: 20),
-                                  _info2Column2('23°', '12 PM'),
-                                  const SizedBox(width: 20),
-                                  _info2Column('26°', '3 PM'),
-                                  const SizedBox(width: 20),
-                                  _info2Column('20°', '6 PM'),
-                                  const SizedBox(width: 20),
-                                  _info2Column('17°', '9 PM'),
-                                  const SizedBox(width: 20),
+                                children: const <Widget>[
+                                  InfoAColumn(title: '19°', subtitle: '9 PM'),
+                                  SizedBox(width: 20),
+                                  InfoAColumn(title: '21°', subtitle: '9 AM'),
+                                  SizedBox(width: 20),
+                                  InfoAColumn2(title: '23°', subtitle: '12 PM'),
+                                  SizedBox(width: 20),
+                                  InfoAColumn(title: '26°', subtitle: '3 PM'),
+                                  SizedBox(width: 20),
+                                  InfoAColumn(title: '20°', subtitle: '6 PM'),
+                                  SizedBox(width: 20),
+                                  InfoAColumn(title: '17°', subtitle: '9 PM'),
+                                  SizedBox(width: 20),
                                 ],
                               ),
                             ),
@@ -396,19 +412,19 @@ class _MySearchPageState extends State<MySearchPage> {
                               child: Row(
                                 mainAxisAlignment:
                                     MainAxisAlignment.spaceEvenly,
-                                children: <Widget>[
-                                  _info2Column('20°', '9 PM'),
-                                  const SizedBox(width: 20),
-                                  _info2Column('21°', '9 AM'),
-                                  const SizedBox(width: 20),
-                                  _info2Column2('20°', '12 PM'),
-                                  const SizedBox(width: 20),
-                                  _info2Column('23°', '3 PM'),
-                                  const SizedBox(width: 20),
-                                  _info2Column('19°', '6 PM'),
-                                  const SizedBox(width: 20),
-                                  _info2Column('18°', '9 PM'),
-                                  const SizedBox(width: 20),
+                                children: const <Widget>[
+                                  InfoAColumn(title: '20°', subtitle: '9 PM'),
+                                  SizedBox(width: 20),
+                                  InfoAColumn(title: '21°', subtitle: '9 AM'),
+                                  SizedBox(width: 20),
+                                  InfoAColumn2(title: '20°', subtitle: '12 PM'),
+                                  SizedBox(width: 20),
+                                  InfoAColumn(title: '23°', subtitle: '3 PM'),
+                                  SizedBox(width: 20),
+                                  InfoAColumn(title: '19°', subtitle: '6 PM'),
+                                  SizedBox(width: 20),
+                                  InfoAColumn(title: '18°', subtitle: '9 PM'),
+                                  SizedBox(width: 20),
                                 ],
                               ),
                             ),
@@ -467,7 +483,7 @@ class _MySearchPageState extends State<MySearchPage> {
                                     const SizedBox(width: 30),
                                     const Image(
                                       image: AssetImage(
-                                        'images/weather3.jpg',
+                                        'images/rainy.png',
                                       ),
                                       height: 70,
                                       width: 60,
@@ -488,19 +504,19 @@ class _MySearchPageState extends State<MySearchPage> {
                               child: Row(
                                 mainAxisAlignment:
                                     MainAxisAlignment.spaceEvenly,
-                                children: <Widget>[
-                                  _info2Column('20°', '9 PM'),
-                                  const SizedBox(width: 20),
-                                  _info2Column('19°', '9 AM'),
-                                  const SizedBox(width: 20),
-                                  _info2Column2('18°', '12 PM'),
-                                  const SizedBox(width: 20),
-                                  _info2Column('21°', '3 PM'),
-                                  const SizedBox(width: 20),
-                                  _info2Column('22°', '6 PM'),
-                                  const SizedBox(width: 20),
-                                  _info2Column('19°', '9 PM'),
-                                  const SizedBox(width: 20),
+                                children: const <Widget>[
+                                  InfoAColumn(title: '20°', subtitle: '9 PM'),
+                                  SizedBox(width: 20),
+                                  InfoAColumn(title: '19°', subtitle: '9 AM'),
+                                  SizedBox(width: 20),
+                                  InfoAColumn2(title: '18°', subtitle: '12 PM'),
+                                  SizedBox(width: 20),
+                                  InfoAColumn(title: '21°', subtitle: '3 PM'),
+                                  SizedBox(width: 20),
+                                  InfoAColumn(title: '22°', subtitle: '6 PM'),
+                                  SizedBox(width: 20),
+                                  InfoAColumn(title: '19°', subtitle: '9 PM'),
+                                  SizedBox(width: 20),
                                 ],
                               ),
                             ),
