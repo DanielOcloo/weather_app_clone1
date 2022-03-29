@@ -1,4 +1,3 @@
-//import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'next.dart';
 import 'search.dart';
@@ -122,6 +121,45 @@ class Info2Column extends StatelessWidget {
   }
 }
 
+class InfoSColumn extends StatelessWidget {
+  final String? picture;
+  final String? title;
+  final String? subtitle;
+
+  const InfoSColumn({
+    Key? key,
+    this.picture,
+    this.title,
+    this.subtitle,
+  }) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      mainAxisAlignment: MainAxisAlignment.center,
+      children: <Widget>[
+        Text(
+          '$title',
+          style: TextStyle(
+            color: Colors.white.withOpacity(0.8),
+            fontSize: 18,
+            fontWeight: FontWeight.bold,
+          ),
+        ),
+        Text(
+          '$subtitle',
+          style: TextStyle(
+            color: Colors.white.withOpacity(0.4),
+            fontSize: 15,
+            fontWeight: FontWeight.w600,
+          ),
+        ),
+      ],
+    );
+  }
+}
+
 class _MyHomePageState extends State<MyHomePage> {
   Widget _infoColumn(
     String title,
@@ -154,119 +192,6 @@ class _MyHomePageState extends State<MyHomePage> {
       ],
     );
   }
-
-  Widget _infoSColumn(
-    String title,
-    String subtitle, {
-    bool inverse = false,
-  }) {
-    return Column(
-      crossAxisAlignment: CrossAxisAlignment.start,
-      children: <Widget>[
-        Text(
-          title,
-          style: TextStyle(
-            color: inverse
-                ? Colors.white.withOpacity(0.4)
-                : Colors.white.withOpacity(0.8),
-            fontSize: 18,
-            fontWeight: inverse ? FontWeight.w600 : FontWeight.bold,
-          ),
-        ),
-        const SizedBox(height: 3),
-        Text(
-          subtitle,
-          style: TextStyle(
-            color: inverse
-                ? Colors.white.withOpacity(0.8)
-                : Colors.white.withOpacity(0.4),
-            fontSize: 15,
-            fontWeight: inverse ? FontWeight.bold : FontWeight.w600,
-          ),
-        ),
-      ],
-    );
-  }
-
-/*  Widget _infoPColumn(
-    String image,
-    String title,
-    String subtitle, {
-    bool inverse = false,
-  }) {
-    return Column(
-      children: <Widget>[
-        const SizedBox(height: 5),
-        Image(
-          image: AssetImage(image),
-          height: 25,
-          width: 25,
-        ),
-        const SizedBox(height: 10),
-        Text(
-          title,
-          style: TextStyle(
-            color: inverse
-                ? Colors.black.withOpacity(0.4)
-                : Colors.black.withOpacity(0.8),
-            fontSize: 28,
-            fontWeight: inverse ? FontWeight.w600 : FontWeight.bold,
-          ),
-        ),
-        const SizedBox(height: 10),
-        Text(
-          subtitle,
-          style: TextStyle(
-            color: inverse
-                ? Colors.black.withOpacity(0.8)
-                : Colors.black.withOpacity(0.4),
-            fontSize: 13,
-            fontWeight: inverse ? FontWeight.bold : FontWeight.w600,
-          ),
-        ),
-      ],
-    );
-  }
-
-  Widget _infoP2Column(
-    String image,
-    String title,
-    String subtitle, {
-    bool inverse = false,
-  }) {
-    return Column(
-      children: <Widget>[
-        const SizedBox(height: 5),
-        Image(
-          image: AssetImage(image),
-          height: 25,
-          width: 25,
-        ),
-        const SizedBox(height: 10),
-        Text(
-          title,
-          style: TextStyle(
-            color: inverse
-                ? Colors.white.withOpacity(0.4)
-                : Colors.white.withOpacity(0.8),
-            fontSize: 28,
-            fontWeight: inverse ? FontWeight.w600 : FontWeight.bold,
-          ),
-        ),
-        const SizedBox(height: 10),
-        Text(
-          subtitle,
-          style: TextStyle(
-            color: inverse
-                ? Colors.white.withOpacity(0.8)
-                : Colors.white.withOpacity(0.4),
-            fontSize: 13,
-            fontWeight: inverse ? FontWeight.bold : FontWeight.w600,
-          ),
-        ),
-      ],
-    );
-  }*/
 
   @override
   Widget build(BuildContext context) {
@@ -338,8 +263,8 @@ class _MyHomePageState extends State<MyHomePage> {
                       const SizedBox(height: 20),
                       IntrinsicHeight(
                         child: Row(
-                          children: <Widget>[
-                            const Padding(
+                          children: const <Widget>[
+                            Padding(
                               padding: EdgeInsets.only(left: 50),
                               child: Text(
                                 '24°',
@@ -350,17 +275,15 @@ class _MyHomePageState extends State<MyHomePage> {
                                 ),
                               ),
                             ),
-                            const SizedBox(width: 30),
-                            const VerticalDivider(
+                            SizedBox(width: 30),
+                            VerticalDivider(
                               width: 30,
                               color: Colors.white,
                             ),
-                            const SizedBox(
-                              width: 20,
-                            ),
-                            _infoSColumn(
-                              'Sunny Afternoon',
-                              '12 PM - 3 PM',
+                            SizedBox(width: 20),
+                            InfoSColumn(
+                              title: 'Sunny Afternoon',
+                              subtitle: '12 PM - 3 PM',
                             )
                           ],
                         ),
@@ -370,7 +293,7 @@ class _MyHomePageState extends State<MyHomePage> {
                         endIndent: 20,
                         height: 30,
                         thickness: 1,
-                        color: Colors.white.withOpacity(0.3),
+                        color: Colors.white.withOpacity(0.5),
                       ),
                       Padding(
                         padding: const EdgeInsets.symmetric(horizontal: 35.0),
@@ -448,10 +371,15 @@ class _MyHomePageState extends State<MyHomePage> {
                           Container(
                             height: 35,
                             width: 140,
-                            child: Padding(
-                              padding: const EdgeInsets.only(
-                                left: 5.0,
+                            decoration: BoxDecoration(
+                              border: Border.all(
+                                color: const Color.fromARGB(255, 236, 214, 10),
+                                width: 3,
                               ),
+                              borderRadius: BorderRadius.circular(2),
+                            ),
+                            child: Padding(
+                              padding: const EdgeInsets.only(left: 5.0),
                               child: Row(
                                 children: <Widget>[
                                   TextButton(
@@ -472,22 +400,13 @@ class _MyHomePageState extends State<MyHomePage> {
                                       ),
                                     ),
                                   ),
-                                  const SizedBox(
-                                    width: 5,
-                                  ),
+                                  const SizedBox(width: 5),
                                   const Icon(
                                     Icons.arrow_right_alt_sharp,
                                     color: Color.fromARGB(255, 236, 214, 10),
                                   ),
                                 ],
                               ),
-                            ),
-                            decoration: BoxDecoration(
-                              border: Border.all(
-                                color: const Color.fromARGB(255, 236, 214, 10),
-                                width: 3,
-                              ),
-                              borderRadius: BorderRadius.circular(2),
                             ),
                           ),
                         ],
@@ -584,8 +503,7 @@ class _MyHomePageState extends State<MyHomePage> {
                     onPressed: () => Navigator.push(
                       context,
                       MaterialPageRoute(
-                        builder: (context) => const MySearchPage(),
-                      ),
+                          builder: (context) => const MySearchPage()),
                     ),
                     icon: Icon(
                       Icons.search_rounded,
