@@ -11,7 +11,11 @@ class MySearchPage extends StatefulWidget {
 }
 
 class _MySearchPageState extends State<MySearchPage> {
-  Widget _infoColumn(String title, String subtitle, {bool inverse = false}) {
+  Widget _infoColumn(
+    String title,
+    String subtitle, {
+    bool inverse = false,
+  }) {
     return Column(
       children: <Widget>[
         Text(
