@@ -11,155 +11,6 @@ class MyHomePage extends StatefulWidget {
   State<MyHomePage> createState() => _MyHomePageState();
 }
 
-//stateless widget
-class InfoColumn extends StatelessWidget {
-  final String? picture;
-  final String? title;
-  final String? subtitle;
-
-  const InfoColumn({
-    Key? key,
-    this.picture,
-    this.title,
-    this.subtitle,
-  }) : super(key: key);
-
-  @override
-  Widget build(BuildContext context) {
-    return Container(
-      height: 110,
-      width: 80,
-      decoration: BoxDecoration(
-        border: Border.all(
-          width: 1,
-          color: Colors.black.withOpacity(0.2),
-        ),
-        borderRadius: BorderRadius.circular(3),
-      ),
-      child: Column(
-        children: <Widget>[
-          const SizedBox(height: 5),
-          Image(
-            image: AssetImage('$picture'),
-            height: 25,
-            width: 25,
-          ),
-          const SizedBox(height: 10),
-          Text(
-            '$title',
-            style: TextStyle(
-              color: Colors.black.withOpacity(0.8),
-              fontSize: 28,
-              fontWeight: FontWeight.bold,
-            ),
-          ),
-          const SizedBox(height: 10),
-          Text(
-            '$subtitle',
-            style: TextStyle(
-              color: Colors.black.withOpacity(0.4),
-              fontSize: 13,
-              fontWeight: FontWeight.w600,
-            ),
-          ),
-        ],
-      ),
-    );
-  }
-}
-
-class Info2Column extends StatelessWidget {
-  final String? picture;
-  final String? title;
-  final String? subtitle;
-
-  const Info2Column({
-    Key? key,
-    this.picture,
-    this.title,
-    this.subtitle,
-  }) : super(key: key);
-
-  @override
-  Widget build(BuildContext context) {
-    return Container(
-      height: 110,
-      width: 80,
-      decoration: BoxDecoration(
-        color: const Color.fromARGB(255, 34, 112, 228),
-        borderRadius: BorderRadius.circular(3),
-      ),
-      child: Column(
-        children: <Widget>[
-          const SizedBox(height: 5),
-          Image(
-            image: AssetImage('$picture'),
-            height: 25,
-            width: 25,
-          ),
-          const SizedBox(height: 10),
-          Text(
-            '$title',
-            style: TextStyle(
-              color: Colors.white.withOpacity(0.8),
-              fontSize: 28,
-              fontWeight: FontWeight.bold,
-            ),
-          ),
-          const SizedBox(height: 10),
-          Text(
-            '$subtitle',
-            style: TextStyle(
-              color: Colors.white.withOpacity(0.4),
-              fontSize: 13,
-              fontWeight: FontWeight.w600,
-            ),
-          ),
-        ],
-      ),
-    );
-  }
-}
-
-class InfoSColumn extends StatelessWidget {
-  final String? picture;
-  final String? title;
-  final String? subtitle;
-
-  const InfoSColumn({
-    Key? key,
-    this.picture,
-    this.title,
-    this.subtitle,
-  }) : super(key: key);
-
-  @override
-  Widget build(BuildContext context) {
-    return Column(
-      crossAxisAlignment: CrossAxisAlignment.start,
-      mainAxisAlignment: MainAxisAlignment.center,
-      children: <Widget>[
-        Text(
-          '$title',
-          style: TextStyle(
-            color: Colors.white.withOpacity(0.8),
-            fontSize: 18,
-            fontWeight: FontWeight.bold,
-          ),
-        ),
-        Text(
-          '$subtitle',
-          style: TextStyle(
-            color: Colors.white.withOpacity(0.4),
-            fontSize: 15,
-            fontWeight: FontWeight.w600,
-          ),
-        ),
-      ],
-    );
-  }
-}
-
 class _MyHomePageState extends State<MyHomePage> {
   Widget _infoColumn(
     String title,
@@ -523,6 +374,154 @@ class _MyHomePageState extends State<MyHomePage> {
           ],
         ),
       ),
+    );
+  }
+}
+
+class InfoColumn extends StatelessWidget {
+  final String? picture;
+  final String? title;
+  final String? subtitle;
+
+  const InfoColumn({
+    Key? key,
+    this.picture,
+    this.title,
+    this.subtitle,
+  }) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      height: 110,
+      width: 80,
+      decoration: BoxDecoration(
+        border: Border.all(
+          width: 1,
+          color: Colors.black.withOpacity(0.2),
+        ),
+        borderRadius: BorderRadius.circular(3),
+      ),
+      child: Column(
+        children: <Widget>[
+          const SizedBox(height: 5),
+          Image(
+            image: AssetImage('$picture'),
+            height: 25,
+            width: 25,
+          ),
+          const SizedBox(height: 10),
+          Text(
+            '$title',
+            style: TextStyle(
+              color: Colors.black.withOpacity(0.8),
+              fontSize: 28,
+              fontWeight: FontWeight.bold,
+            ),
+          ),
+          const SizedBox(height: 10),
+          Text(
+            '$subtitle',
+            style: TextStyle(
+              color: Colors.black.withOpacity(0.4),
+              fontSize: 13,
+              fontWeight: FontWeight.w600,
+            ),
+          ),
+        ],
+      ),
+    );
+  }
+}
+
+class Info2Column extends StatelessWidget {
+  final String? picture;
+  final String? title;
+  final String? subtitle;
+
+  const Info2Column({
+    Key? key,
+    this.picture,
+    this.title,
+    this.subtitle,
+  }) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      height: 110,
+      width: 80,
+      decoration: BoxDecoration(
+        color: const Color.fromARGB(255, 34, 112, 228),
+        borderRadius: BorderRadius.circular(3),
+      ),
+      child: Column(
+        children: <Widget>[
+          const SizedBox(height: 5),
+          Image(
+            image: AssetImage('$picture'),
+            height: 25,
+            width: 25,
+          ),
+          const SizedBox(height: 10),
+          Text(
+            '$title',
+            style: TextStyle(
+              color: Colors.white.withOpacity(0.8),
+              fontSize: 28,
+              fontWeight: FontWeight.bold,
+            ),
+          ),
+          const SizedBox(height: 10),
+          Text(
+            '$subtitle',
+            style: TextStyle(
+              color: Colors.white.withOpacity(0.4),
+              fontSize: 13,
+              fontWeight: FontWeight.w600,
+            ),
+          ),
+        ],
+      ),
+    );
+  }
+}
+
+class InfoSColumn extends StatelessWidget {
+  final String? picture;
+  final String? title;
+  final String? subtitle;
+
+  const InfoSColumn({
+    Key? key,
+    this.picture,
+    this.title,
+    this.subtitle,
+  }) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      mainAxisAlignment: MainAxisAlignment.center,
+      children: <Widget>[
+        Text(
+          '$title',
+          style: TextStyle(
+            color: Colors.white.withOpacity(0.8),
+            fontSize: 18,
+            fontWeight: FontWeight.bold,
+          ),
+        ),
+        Text(
+          '$subtitle',
+          style: TextStyle(
+            color: Colors.white.withOpacity(0.4),
+            fontSize: 15,
+            fontWeight: FontWeight.w600,
+          ),
+        ),
+      ],
     );
   }
 }
