@@ -10,82 +10,6 @@ class MySearchPage extends StatefulWidget {
   State<MySearchPage> createState() => _MySearchPageState();
 }
 
-class InfoAColumn extends StatelessWidget {
-  final String? picture;
-  final String? title;
-  final String? subtitle;
-
-  const InfoAColumn({
-    Key? key,
-    this.picture,
-    this.title,
-    this.subtitle,
-  }) : super(key: key);
-
-  @override
-  Widget build(BuildContext context) {
-    return Column(
-      children: <Widget>[
-        Text(
-          '$title',
-          style: TextStyle(
-            color: Colors.black.withOpacity(0.8),
-            fontSize: 18,
-            fontWeight: FontWeight.bold,
-          ),
-        ),
-        const SizedBox(height: 3),
-        Text(
-          '$subtitle',
-          style: TextStyle(
-            color: Colors.black.withOpacity(0.4),
-            fontSize: 15,
-            fontWeight: FontWeight.w600,
-          ),
-        ),
-      ],
-    );
-  }
-}
-
-class InfoAColumn2 extends StatelessWidget {
-  final String? picture;
-  final String? title;
-  final String? subtitle;
-
-  const InfoAColumn2({
-    Key? key,
-    this.picture,
-    this.title,
-    this.subtitle,
-  }) : super(key: key);
-
-  @override
-  Widget build(BuildContext context) {
-    return Column(
-      children: <Widget>[
-        Text(
-          '$title',
-          style: TextStyle(
-            color: const Color.fromARGB(255, 34, 112, 228).withOpacity(0.8),
-            fontSize: 18,
-            fontWeight: FontWeight.w900,
-          ),
-        ),
-        const SizedBox(height: 3),
-        Text(
-          '$subtitle',
-          style: TextStyle(
-            color: const Color.fromARGB(255, 34, 112, 228).withOpacity(0.8),
-            fontSize: 15,
-            fontWeight: FontWeight.w900,
-          ),
-        ),
-      ],
-    );
-  }
-}
-
 class _MySearchPageState extends State<MySearchPage> {
   Widget _infoColumn(
     String title,
@@ -604,6 +528,82 @@ class _MySearchPageState extends State<MySearchPage> {
           ],
         ),
       ),
+    );
+  }
+}
+
+class InfoAColumn extends StatelessWidget {
+  final String? picture;
+  final String? title;
+  final String? subtitle;
+
+  const InfoAColumn({
+    Key? key,
+    this.picture,
+    this.title,
+    this.subtitle,
+  }) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return Column(
+      children: <Widget>[
+        Text(
+          '$title',
+          style: TextStyle(
+            color: Colors.black.withOpacity(0.8),
+            fontSize: 18,
+            fontWeight: FontWeight.bold,
+          ),
+        ),
+        const SizedBox(height: 3),
+        Text(
+          '$subtitle',
+          style: TextStyle(
+            color: Colors.black.withOpacity(0.4),
+            fontSize: 15,
+            fontWeight: FontWeight.w600,
+          ),
+        ),
+      ],
+    );
+  }
+}
+
+class InfoAColumn2 extends StatelessWidget {
+  final String? picture;
+  final String? title;
+  final String? subtitle;
+
+  const InfoAColumn2({
+    Key? key,
+    this.picture,
+    this.title,
+    this.subtitle,
+  }) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return Column(
+      children: <Widget>[
+        Text(
+          '$title',
+          style: TextStyle(
+            color: const Color.fromARGB(255, 34, 112, 228).withOpacity(0.8),
+            fontSize: 18,
+            fontWeight: FontWeight.w900,
+          ),
+        ),
+        const SizedBox(height: 3),
+        Text(
+          '$subtitle',
+          style: TextStyle(
+            color: const Color.fromARGB(255, 34, 112, 228).withOpacity(0.8),
+            fontSize: 15,
+            fontWeight: FontWeight.w900,
+          ),
+        ),
+      ],
     );
   }
 }
