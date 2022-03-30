@@ -9,156 +9,6 @@ class MyNextPage extends StatefulWidget {
   State<MyNextPage> createState() => _MyNextPageState();
 }
 
-class InfoRow extends StatelessWidget {
-  final String? picture;
-  final String? title;
-  final String? ftrail;
-  final String? strail;
-
-  const InfoRow({
-    Key? key,
-    this.picture,
-    this.title,
-    this.ftrail,
-    this.strail,
-  }) : super(key: key);
-
-  @override
-  Widget build(BuildContext context) {
-    return Padding(
-      padding: const EdgeInsets.only(left: 15.0, right: 10),
-      child: IntrinsicHeight(
-        child: Row(
-          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-          children: <Widget>[
-            Image(
-              image: AssetImage(
-                '$picture',
-              ),
-              height: 25,
-              width: 25,
-            ),
-            const SizedBox(width: 20),
-            Text(
-              '$title',
-              style: const TextStyle(
-                fontWeight: FontWeight.bold,
-                fontSize: 16,
-              ),
-            ),
-            const SizedBox(width: 40),
-            VerticalDivider(
-              indent: 2,
-              endIndent: 2,
-              width: 15,
-              color: Colors.black.withOpacity(0.3),
-            ),
-            const SizedBox(width: 10),
-            Text.rich(
-              TextSpan(
-                children: <TextSpan>[
-                  TextSpan(
-                    text: '$ftrail',
-                    style: const TextStyle(
-                      fontSize: 16,
-                      fontWeight: FontWeight.bold,
-                    ),
-                  ),
-                  TextSpan(
-                    text: '$strail',
-                    style: TextStyle(
-                      fontSize: 14,
-                      fontWeight: FontWeight.bold,
-                      color: Colors.black.withOpacity(0.5),
-                    ),
-                  ),
-                ],
-              ),
-            ),
-          ],
-        ),
-      ),
-    );
-  }
-}
-
-class InfoSColumn extends StatelessWidget {
-  final String? picture;
-  final String? title;
-  final String? subtitle;
-
-  const InfoSColumn({
-    Key? key,
-    this.picture,
-    this.title,
-    this.subtitle,
-  }) : super(key: key);
-
-  @override
-  Widget build(BuildContext context) {
-    return Column(
-      crossAxisAlignment: CrossAxisAlignment.start,
-      children: <Widget>[
-        Text(
-          '$title',
-          style: TextStyle(
-            color: Colors.white.withOpacity(0.8),
-            fontSize: 18,
-            fontWeight: FontWeight.bold,
-          ),
-        ),
-        Text(
-          '$subtitle',
-          style: TextStyle(
-            color: Colors.white.withOpacity(0.4),
-            fontSize: 15,
-            fontWeight: FontWeight.w600,
-          ),
-        ),
-      ],
-    );
-  }
-}
-
-class InfoSColumn2 extends StatelessWidget {
-  final String? picture;
-  final String? title;
-  final String? subtitle;
-
-  const InfoSColumn2({
-    Key? key,
-    this.picture,
-    this.title,
-    this.subtitle,
-  }) : super(key: key);
-
-  @override
-  Widget build(BuildContext context) {
-    return Column(
-      crossAxisAlignment: CrossAxisAlignment.start,
-      mainAxisAlignment: MainAxisAlignment.center,
-      children: <Widget>[
-        Text(
-          '$title',
-          style: TextStyle(
-            color: Colors.black.withOpacity(0.8),
-            fontSize: 18,
-            fontWeight: FontWeight.bold,
-          ),
-        ),
-        Text(
-          '$subtitle',
-          style: TextStyle(
-            color: Colors.black.withOpacity(0.4),
-            fontSize: 15,
-            fontWeight: FontWeight.w600,
-          ),
-        ),
-      ],
-    );
-  }
-}
-
 class _MyNextPageState extends State<MyNextPage> {
   Widget _info2Column(
     String title,
@@ -513,6 +363,156 @@ class _MyNextPageState extends State<MyNextPage> {
           ),
         ),
       ),
+    );
+  }
+}
+
+class InfoRow extends StatelessWidget {
+  final String? picture;
+  final String? title;
+  final String? ftrail;
+  final String? strail;
+
+  const InfoRow({
+    Key? key,
+    this.picture,
+    this.title,
+    this.ftrail,
+    this.strail,
+  }) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return Padding(
+      padding: const EdgeInsets.only(left: 15.0, right: 10),
+      child: IntrinsicHeight(
+        child: Row(
+          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+          children: <Widget>[
+            Image(
+              image: AssetImage(
+                '$picture',
+              ),
+              height: 25,
+              width: 25,
+            ),
+            const SizedBox(width: 20),
+            Text(
+              '$title',
+              style: const TextStyle(
+                fontWeight: FontWeight.bold,
+                fontSize: 16,
+              ),
+            ),
+            const SizedBox(width: 40),
+            VerticalDivider(
+              indent: 2,
+              endIndent: 2,
+              width: 15,
+              color: Colors.black.withOpacity(0.3),
+            ),
+            const SizedBox(width: 10),
+            Text.rich(
+              TextSpan(
+                children: <TextSpan>[
+                  TextSpan(
+                    text: '$ftrail',
+                    style: const TextStyle(
+                      fontSize: 16,
+                      fontWeight: FontWeight.bold,
+                    ),
+                  ),
+                  TextSpan(
+                    text: '$strail',
+                    style: TextStyle(
+                      fontSize: 14,
+                      fontWeight: FontWeight.bold,
+                      color: Colors.black.withOpacity(0.5),
+                    ),
+                  ),
+                ],
+              ),
+            ),
+          ],
+        ),
+      ),
+    );
+  }
+}
+
+class InfoSColumn extends StatelessWidget {
+  final String? picture;
+  final String? title;
+  final String? subtitle;
+
+  const InfoSColumn({
+    Key? key,
+    this.picture,
+    this.title,
+    this.subtitle,
+  }) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: <Widget>[
+        Text(
+          '$title',
+          style: TextStyle(
+            color: Colors.white.withOpacity(0.8),
+            fontSize: 18,
+            fontWeight: FontWeight.bold,
+          ),
+        ),
+        Text(
+          '$subtitle',
+          style: TextStyle(
+            color: Colors.white.withOpacity(0.4),
+            fontSize: 15,
+            fontWeight: FontWeight.w600,
+          ),
+        ),
+      ],
+    );
+  }
+}
+
+class InfoSColumn2 extends StatelessWidget {
+  final String? picture;
+  final String? title;
+  final String? subtitle;
+
+  const InfoSColumn2({
+    Key? key,
+    this.picture,
+    this.title,
+    this.subtitle,
+  }) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      mainAxisAlignment: MainAxisAlignment.center,
+      children: <Widget>[
+        Text(
+          '$title',
+          style: TextStyle(
+            color: Colors.black.withOpacity(0.8),
+            fontSize: 18,
+            fontWeight: FontWeight.bold,
+          ),
+        ),
+        Text(
+          '$subtitle',
+          style: TextStyle(
+            color: Colors.black.withOpacity(0.4),
+            fontSize: 15,
+            fontWeight: FontWeight.w600,
+          ),
+        ),
+      ],
     );
   }
 }
